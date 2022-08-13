@@ -1,0 +1,27 @@
+<div class="add-timezone-wrapper">
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon>arrow_back</mat-icon> Back
+    </div>
+
+    <div class="add-timezone-inner-wrapper">
+        <h4>Add Timezone</h4>
+
+        <form autocomplete="off">
+            <mat-form-field>
+                <mat-label>Add Label</mat-label>
+                <input matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Select Timezone</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let timezone of timezones" [value]="timezone">
+                        {{timezone.text}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+    </div>
+
+
+</div>
