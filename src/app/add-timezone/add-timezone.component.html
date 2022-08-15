@@ -1,27 +1,33 @@
-<div class="add-timezone-wrapper">
-    <div fxLayout="row" fxLayoutAlign="start center">
-        <mat-icon>arrow_back</mat-icon> Back
-    </div>
+<mat-icon class="pointer" (click)="goBack()">arrow_back</mat-icon>
 
-    <div class="add-timezone-inner-wrapper">
-        <h4>Add Timezone</h4>
+<div class="add-timezone-inner-wrapper">
+    <h4>Add Timezone</h4>
 
-        <form autocomplete="off">
-            <mat-form-field>
-                <mat-label>Add Label</mat-label>
-                <input matInput>
-            </mat-form-field>
+    <form autocomplete="off" [formGroup]="timezoneForm">
+        <mat-form-field>
+            <mat-label>Add Label</mat-label>
+            <input matInput formControlName="label">
+        </mat-form-field>
 
-            <mat-form-field>
-                <mat-label>Select Timezone</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let timezone of timezones" [value]="timezone">
-                        {{timezone.text}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </form>
-    </div>
+        <mat-form-field>
+            <mat-label>Select Timezone</mat-label>
+            <mat-select formControlName="timezone">
+                <mat-option *ngFor="let timezone of timezones" [value]="timezone">
+                    {{timezone.text}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px">
+            <p *ngIf="showSuccess" class="success">Timezone added successfully!</p>
+            <button mat-flat-button color="primary" [disabled]="timezoneForm.invalid" (click)="addTimezone()">Add</button>
+        </div>
+    </form>
 </div>
+
+<div fxLayout="row" *ngFor="let tz of timezones$ | async">
+    <p fxFlex>{{tz.timezone.text}} <span class="timezone-label" *ngIf="tz.label">({{tz.label}})</span></p>
+    <mat-icon class="pointer delete-timezone" (click)="deleteTimezone(tz)">close</mat-icon>
+</div>
+
+

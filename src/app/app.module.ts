@@ -11,12 +11,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { AddTimezoneComponent } from './add-timezone/add-timezone.component';
 import { FlexModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AnalogClockComponent } from './analog-clock/analog-clock.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AddTimezoneComponent
+    AddTimezoneComponent,
+    AnalogClockComponent
   ],
     imports: [
         BrowserModule,
@@ -26,7 +29,8 @@ import { MatInputModule } from '@angular/material/input';
         MatButtonModule,
         MatIconModule,
         FlexModule,
-        MatInputModule
+        MatInputModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
