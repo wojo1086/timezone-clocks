@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {TIMEZONES} from '../../assets/json/timezones/timezones';
+import { Timezones } from '../../assets/json/timezones/timezones';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StorageService } from '../services/storage-service/storage.service';
 import { Router } from '@angular/router';
-import { from, map, Observable, tap, timer } from 'rxjs';
+import { from, map, Observable, timer } from 'rxjs';
 
 @Component({
     selector: 'app-add-timezone',
@@ -11,7 +11,7 @@ import { from, map, Observable, tap, timer } from 'rxjs';
     styleUrls: ['./add-timezone.component.sass']
 })
 export class AddTimezoneComponent implements OnInit {
-    timezones = TIMEZONES;
+    timezones = Timezones;
     timezoneForm!: FormGroup
     showSuccess = false;
     timezones$!: Observable<any[]>;
@@ -37,14 +37,16 @@ export class AddTimezoneComponent implements OnInit {
             timezone: this.timezoneForm.get('timezone')?.value
         };
         this.storageService.get('timezones').then(val => {
-            console.log(val.timezones);
             if (val.timezones) {
                 val.timezones.push(saveObj);
             } else {
                 val.timezones = [saveObj];
             }
             this.storageService.set('timezones', val.timezones);
-            this.timezoneForm.reset()
+            this.timezoneForm.reset();
+            Object.keys(this.timezoneForm.controls).forEach(key => {
+                this.timezoneForm.controls[key].setErrors(null)
+            });
             this.showSuccess = true;
             this.initTimezonesObs();
             timer(3000).subscribe(() => {
@@ -64,7 +66,6 @@ export class AddTimezoneComponent implements OnInit {
 
     private initTimezonesObs(): void {
         this.timezones$ = from(this.storageService.get('timezones')).pipe(
-            tap(console.log),
             map(val => val.timezones)
         );
     }

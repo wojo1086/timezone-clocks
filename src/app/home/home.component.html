@@ -1,16 +1,17 @@
 <div fxLayout="row" fxLayoutAlign="end">
     <mat-icon (click)="addTimezone()">edit</mat-icon>
-<!--    <button mat-stroked-button color="primary" (click)="addTimezone()">-->
-<!--        <mat-icon>add</mat-icon>-->
-<!--        Add Timezone-->
-<!--    </button>-->
 </div>
 
 <ng-container *ngIf="timezones$ | async as timezones">
     <p class="text-center no-timezones" *ngIf="!timezones.length">
         You don't have any timezones yet. <a [routerLink]="'add-timezone'">Add one now.</a>
     </p>
-    <div fxLayout="row-reverse" fxLayoutGap="16px">
-        <app-analog-clock *ngFor="let timezone of timezones" [timezone]="timezone"></app-analog-clock>
+    <div class="overflow-x">
+        <div fxLayout="row inline" fxLayoutAlign="center" fxLayoutGap="16px">
+            <div class="analog-clock-wrapper" *ngFor="let timezone of timezones">
+                <app-analog-clock [timezone]="timezone"></app-analog-clock>
+            </div>
+        </div>
     </div>
+
 </ng-container>

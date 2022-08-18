@@ -1,4 +1,4 @@
-export const TIMEZONES = [
+export const Timezones = [
     {
         "value": "Dateline Standard Time",
         "abbr": "DST",
@@ -58,18 +58,6 @@ export const TIMEZONES = [
         "text": "(UTC-08:00) Baja California",
         "utc": [
             "America/Santa_Isabel"
-        ]
-    },
-    {
-        "value": "Pacific Daylight Time",
-        "abbr": "PDT",
-        "offset": -7,
-        "isdst": true,
-        "text": "(UTC-07:00) Pacific Daylight Time (US & Canada)",
-        "utc": [
-            "America/Los_Angeles",
-            "America/Tijuana",
-            "America/Vancouver"
         ]
     },
     {
@@ -218,31 +206,6 @@ export const TIMEZONES = [
         "offset": -5,
         "isdst": false,
         "text": "(UTC-05:00) Eastern Time (US & Canada)",
-        "utc": [
-            "America/Detroit",
-            "America/Havana",
-            "America/Indiana/Petersburg",
-            "America/Indiana/Vincennes",
-            "America/Indiana/Winamac",
-            "America/Iqaluit",
-            "America/Kentucky/Monticello",
-            "America/Louisville",
-            "America/Montreal",
-            "America/Nassau",
-            "America/New_York",
-            "America/Nipigon",
-            "America/Pangnirtung",
-            "America/Port-au-Prince",
-            "America/Thunder_Bay",
-            "America/Toronto"
-        ]
-    },
-    {
-        "value": "Eastern Daylight Time",
-        "abbr": "EDT",
-        "offset": -4,
-        "isdst": true,
-        "text": "(UTC-04:00) Eastern Daylight Time (US & Canada)",
         "utc": [
             "America/Detroit",
             "America/Havana",

@@ -1,20 +1,23 @@
-<h4 class="text-center">{{timezone.label}}</h4>
+<h4 class="text-center bold ellipses">{{timezone.label}}</h4>
 
-<div class="clock">
-    <div class="outer-clock-face">
-        <div class="marking marking-one"></div>
-        <div class="marking marking-two"></div>
-        <div class="marking marking-three"></div>
-        <div class="marking marking-four"></div>
+<div fxLayout="row" fxLayoutAlign="center">
+    <div class="clock">
+        <div class="outer-clock-face">
+            <div class="marking marking-one"></div>
+            <div class="marking marking-two"></div>
+            <div class="marking marking-three"></div>
+            <div class="marking marking-four"></div>
+        </div>
+
+        <div class="inner-clock-face"></div>
+
+        <div class="hand hour-hand" #hourHand></div>
+        <div class="hand min-hand" #minuteHand></div>
+        <div class="hand second-hand" #secondHand></div>
     </div>
-
-    <div class="inner-clock-face"></div>
-
-    <div class="hand hour-hand" #hourHand></div>
-    <div class="hand min-hand" #minuteHand></div>
-    <div class="hand second-hand" #secondHand></div>
-
 </div>
 
-<p class="text-center timezone-text">{{timezoneTimeString}}</p>
-<p class="text-center">{{timezoneDateString}}</p>
+
+<p class="text-center timezone-text bold">{{timezoneTimeString}}</p>
+<p class="text-center text-sm">{{timezoneDateString}}</p>
+<p class="text-center text-sm">{{timezone.timezone.text}}</p>

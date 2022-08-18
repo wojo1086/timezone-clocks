@@ -10,7 +10,6 @@ import { from, map, Observable, tap } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
     timezones$: Observable<any[]> = from(this.storageService.get('timezones')).pipe(
-        tap(console.log),
         map(val => val.timezones),
         map(tzs => {
             tzs.forEach((tz: any) => {
